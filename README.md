@@ -37,4 +37,3 @@ Users should be able to:
 - SCSS (Sassy CSS) custom properties
 - JavaScript
 - CSS Grid
-- Mobile-first workflow
