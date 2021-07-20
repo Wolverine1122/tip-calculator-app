@@ -1,0 +1,288 @@
+/* VARIABLES */
+$strong-cyan: hsl(172, 67%, 45%);
+$dark-cyan: hsl(183, 100%, 15%);
+$darker-grayish-cyan: hsl(186, 14%, 43%);
+$dark-grayish-cyan: hsl(186, 14%, 56%);
+$background: hsl(185, 41%, 84%);
+$button-background: hsl(189, 41%, 97%);
+$white: hsl(0, 0%, 100%);
+
+/*-----------------------------------------------*/
+/* BASIC SETUP */
+/*-----------------------------------------------*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+}
+
+body {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr -webkit-max-content 1fr;
+  grid-template-columns: 1fr max-content 1fr;
+  grid-template-areas:
+    ". header     ."
+    ". calculator ."
+    ". footer     .";
+  background-color: $background;
+}
+
+/*-----------------------------------------------*/
+/* HEADER */
+/*-----------------------------------------------*/
+header {
+  grid-area: header;
+  display: grid;
+  place-items: center;
+  padding: 30px 0 0;
+
+  p {
+    color: red;
+  }
+}
+
+/*-----------------------------------------------*/
+/* REUSABLE / GENERAL RULES */
+/*-----------------------------------------------*/
+.larger-weight {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+}
+
+.select-tip-headings {
+  @extend .larger-weight;
+  font-size: 80%;
+  color: $darker-grayish-cyan;
+  margin-bottom: 7px;
+}
+
+.select-tip-btn-structure {
+  width: 100px;
+  height: 40px;
+  border: 0;
+  border-radius: 5px;
+}
+
+@mixin bill-people-input {
+  background-color: $button-background;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  width: 100%;
+  text-align: end;
+  @extend .larger-weight;
+  font-size: 120%;
+  color: $dark-cyan;
+  border: 0;
+  border-radius: 5px;
+  padding: 3px 10px;
+
+  &::-webkit-input-placeholder {
+    color: $darker-grayish-cyan;
+  }
+
+  &::-moz-placeholder {
+    color: $darker-grayish-cyan;
+  }
+
+  &:-ms-input-placeholder {
+    color: $darker-grayish-cyan;
+  }
+
+  &::-ms-input-placeholder {
+    color: $darker-grayish-cyan;
+  }
+
+  &::placeholder {
+    color: $darker-grayish-cyan;
+  }
+}
+
+.invalid-input {
+  outline: red auto 1px;
+}
+/*-----------------------------------------------*/
+/* HEADER */
+/*-----------------------------------------------*/
+
+h3 {
+  @extend .larger-weight;
+  color: $white;
+  font-size: 100%;
+}
+
+/*-----------------------------------------------*/
+/* MAIN */
+/*-----------------------------------------------*/
+main {
+  grid-area: calculator;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  grid-column-gap: 30px;
+  background-color: $white;
+  padding: 30px;
+  border-radius: 20px;
+
+  .input-side {
+    display: grid;
+    grid-template-rows: repeat(3, -webkit-max-content);
+    grid-template-rows: repeat(3, max-content);
+    grid-row-gap: 20px;
+
+    .bill-row {
+      input {
+        @include bill-people-input;
+        background-image: url(../images/icon-dollar.svg);
+      }
+    }
+
+    .select-tip-row {
+      .single-select-btn-group {
+        outline: none;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+        color: $white;
+
+        div {
+          outline: none;
+          display: flex;
+
+          .custom-input {
+            @extend .larger-weight;
+            @extend .select-tip-btn-structure;
+            font-size: 100%;
+            background-color: $button-background;
+            color: $dark-cyan;
+            text-align: center;
+          }
+
+          input.single-select-btn {
+            display: none;
+            opacity: 100;
+
+            &:checked + label {
+              background-color: $strong-cyan;
+              color: $dark-cyan;
+              outline: none;
+            }
+          }
+          label {
+            display: grid;
+            place-content: center;
+            background-color: $dark-cyan;
+            @extend .select-tip-btn-structure;
+
+            /* Shows colors when you click before you actually select */
+            &:active,
+            &:hover {
+              cursor: pointer;
+              outline: none;
+              background-color: $background;
+              color: $dark-cyan;
+            }
+          }
+        }
+      }
+    }
+
+    .number-of-people-row {
+      input {
+        @include bill-people-input;
+        background-image: url(../images/icon-person.svg);
+      }
+    }
+  }
+
+  .output-side {
+    display: grid;
+    grid-template-rows: repeat(2, -webkit-max-content) auto;
+    grid-template-rows: repeat(2, max-content) auto;
+    grid-row-gap: 40px;
+    background-color: $dark-cyan;
+    border-radius: 10px;
+    padding: 30px;
+
+    .result-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      .text p {
+        @extend .larger-weight;
+        font-size: 70%;
+        color: $darker-grayish-cyan;
+      }
+
+      .result p {
+        @extend .larger-weight;
+        font-size: 170%;
+        color: $strong-cyan;
+        text-align: end;
+      }
+    }
+
+    .reset-row {
+      display: grid;
+      align-content: end;
+
+      button {
+        @extend .larger-weight;
+        font-size: 100%;
+        border: 0;
+        border-radius: 5px;
+        padding: 7px;
+
+        &:disabled {
+          background: linear-gradient(
+              hsla(185, 41%, 84%, 0.2),
+              hsla(185, 41%, 84%, 0.2)
+            ),
+            linear-gradient($dark-cyan, $dark-cyan);
+          color: $dark-cyan;
+        }
+        &:enabled {
+          cursor: pointer;
+          background: linear-gradient($strong-cyan, $strong-cyan);
+        }
+      }
+    }
+  }
+}
+
+/* Removes arrows/spinners */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/*-----------------------------------------------*/
+/* FOOTER */
+/*-----------------------------------------------*/
+
+footer {
+  grid-area: footer;
+  font-size: 11px;
+  display: grid;
+  justify-content: center;
+  align-content: end;
+  padding-bottom: 10px;
+  color: $dark-cyan;
+}
+a {
+  color: $strong-cyan;
+}

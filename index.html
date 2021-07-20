@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--FAVICONS-->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <!--STYLESHEETS-->
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/queries.css">
+
+    <!--FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Frontend Mentor | Tip calculator app</title>
+  </head>
+  <body>
+    <header>
+      <img src="./images/logo.svg" alt="logo-img" />
+      <p id="warning"></p>
+    </header>
+
+    <main>
+      <div class="input-side">
+        <div class="bill-row">
+          <p class="select-tip-headings">Bill</p>
+          <input
+            type="number"
+            name="bill-input"
+            oninput="calculateTip()"
+            id="bill-input"
+            placeholder="0"
+            autocomplete="off"
+          />
+        </div>
+        <div class="select-tip-row">
+          <p class="select-tip-headings">Select Tip %</p>
+          <div class="single-select-btn-group">
+            <div>
+              <input
+                type="radio"
+                id="5%"
+                onclick="calculateTip()"
+                class="single-select-btn"
+                name="option"
+              />
+              <label for="5%">5%</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="10%"
+                onclick="calculateTip()"
+                class="single-select-btn"
+                name="option"
+              />
+              <label for="10%">10%</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="15%"
+                onclick="calculateTip()"
+                class="single-select-btn"
+                name="option"
+              />
+              <label for="15%">15%</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="25%"
+                onclick="calculateTip()"
+                class="single-select-btn"
+                name="option"
+              />
+              <label for="25%">25%</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="50%"
+                onclick="calculateTip()"
+                class="single-select-btn"
+                name="option"
+              />
+              <label for="50%">50%</label>
+            </div>
+            <div>
+              <input
+                type="number"
+                name="custom-input"
+                id="custom-input"
+                placeholder="Custom"
+                oninput="calculateTip()"
+                class="custom-input"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="number-of-people-row">
+          <p class="select-tip-headings">Number of People</p>
+          <input
+            type="number"
+            name="people-input"
+            oninput="calculateTip()"
+            id="people-input"
+            placeholder="0"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
+      <div class="output-side">
+        <div class="result-row result-tip-amount">
+          <div class="text">
+            <h3>Tip Amount</h3>
+            <p>/ person</p>
+          </div>
+          <div class="result">
+            <p id="tip-amount">$0.00</p>
+          </div>
+        </div>
+        <div class="result-row result-total">
+          <div class="text">
+            <h3>Total</h3>
+            <p>/ person</p>
+          </div>
+          <div class="result">
+            <p id="total">$0.00</p>
+          </div>
+        </div>
+        <div class="reset-row">
+          <button id="reset-button" class="reset-button" onclick="reset()">RESET</button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="attribution">
+      <div>
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="https://github.com/Wolverine1122">Behzod</a>.
+      </div>
+    </footer>
+
+    <script src="./index.js"></script>
+  </body>
+</html>

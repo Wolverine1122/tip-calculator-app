@@ -1,0 +1,308 @@
+/* VARIABLES */
+/*-----------------------------------------------*/
+/* BASIC SETUP */
+/*-----------------------------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+}
+
+body {
+  display: -ms-grid;
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr -webkit-max-content 1fr;
+  -ms-grid-columns: 1fr max-content 1fr;
+      grid-template-columns: 1fr max-content 1fr;
+      grid-template-areas: ". header     ." ". calculator ." ". footer     .";
+  background-color: #c5e4e7;
+}
+
+/*-----------------------------------------------*/
+/* HEADER */
+/*-----------------------------------------------*/
+header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: header;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  padding: 30px 0 0;
+}
+
+header p {
+  color: red;
+}
+
+/*-----------------------------------------------*/
+/* REUSABLE / GENERAL RULES */
+/*-----------------------------------------------*/
+.larger-weight, .select-tip-headings, h3, main .input-side .bill-row input, main .input-side .select-tip-row .single-select-btn-group div .custom-input, main .input-side .number-of-people-row input, main .output-side .result-row .text p, main .output-side .result-row .result p, main .output-side .reset-row button {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+}
+
+.select-tip-headings {
+  font-size: 80%;
+  color: #5e7a7d;
+  margin-bottom: 7px;
+}
+
+.select-tip-btn-structure, main .input-side .select-tip-row .single-select-btn-group div .custom-input, main .input-side .select-tip-row .single-select-btn-group div label {
+  width: 100px;
+  height: 40px;
+  border: 0;
+  border-radius: 5px;
+}
+
+.invalid-input {
+  outline: red auto 1px;
+}
+
+/*-----------------------------------------------*/
+/* HEADER */
+/*-----------------------------------------------*/
+h3 {
+  color: white;
+  font-size: 100%;
+}
+
+/*-----------------------------------------------*/
+/* MAIN */
+/*-----------------------------------------------*/
+main {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: calculator;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  grid-column-gap: 30px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+main .input-side {
+  display: -ms-grid;
+  display: grid;
+  grid-template-rows: repeat(3, -webkit-max-content);
+  -ms-grid-rows: (max-content)[3];
+      grid-template-rows: repeat(3, max-content);
+  grid-row-gap: 20px;
+}
+
+main .input-side .bill-row input {
+  background-color: #f4fafa;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  width: 100%;
+  text-align: end;
+  font-size: 120%;
+  color: #00494d;
+  border: 0;
+  border-radius: 5px;
+  padding: 3px 10px;
+  background-image: url(../images/icon-dollar.svg);
+}
+
+main .input-side .bill-row input::-webkit-input-placeholder {
+  color: #5e7a7d;
+}
+
+main .input-side .bill-row input:-ms-input-placeholder {
+  color: #5e7a7d;
+}
+
+main .input-side .bill-row input::-ms-input-placeholder {
+  color: #5e7a7d;
+}
+
+main .input-side .bill-row input::placeholder {
+  color: #5e7a7d;
+}
+
+main .input-side .select-tip-row .single-select-btn-group {
+  outline: none;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  color: white;
+}
+
+main .input-side .select-tip-row .single-select-btn-group div {
+  outline: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main .input-side .select-tip-row .single-select-btn-group div .custom-input {
+  font-size: 100%;
+  background-color: #f4fafa;
+  color: #00494d;
+  text-align: center;
+}
+
+main .input-side .select-tip-row .single-select-btn-group div input.single-select-btn {
+  display: none;
+  opacity: 100;
+}
+
+main .input-side .select-tip-row .single-select-btn-group div input.single-select-btn:checked + label {
+  background-color: #26c0ab;
+  color: #00494d;
+  outline: none;
+}
+
+main .input-side .select-tip-row .single-select-btn-group div label {
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  background-color: #00494d;
+  /* Shows colors when you click before you actually select */
+}
+
+main .input-side .select-tip-row .single-select-btn-group div label:active, main .input-side .select-tip-row .single-select-btn-group div label:hover {
+  cursor: pointer;
+  outline: none;
+  background-color: #c5e4e7;
+  color: #00494d;
+}
+
+main .input-side .number-of-people-row input {
+  background-color: #f4fafa;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  width: 100%;
+  text-align: end;
+  font-size: 120%;
+  color: #00494d;
+  border: 0;
+  border-radius: 5px;
+  padding: 3px 10px;
+  background-image: url(../images/icon-person.svg);
+}
+
+main .input-side .number-of-people-row input::-webkit-input-placeholder {
+  color: #5e7a7d;
+}
+
+main .input-side .number-of-people-row input:-ms-input-placeholder {
+  color: #5e7a7d;
+}
+
+main .input-side .number-of-people-row input::-ms-input-placeholder {
+  color: #5e7a7d;
+}
+
+main .input-side .number-of-people-row input::placeholder {
+  color: #5e7a7d;
+}
+
+main .output-side {
+  display: -ms-grid;
+  display: grid;
+  grid-template-rows: repeat(2, -webkit-max-content) auto;
+  -ms-grid-rows: (max-content)[2] auto;
+      grid-template-rows: repeat(2, max-content) auto;
+  grid-row-gap: 40px;
+  background-color: #00494d;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+main .output-side .result-row {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+}
+
+main .output-side .result-row .text p {
+  font-size: 70%;
+  color: #5e7a7d;
+}
+
+main .output-side .result-row .result p {
+  font-size: 170%;
+  color: #26c0ab;
+  text-align: end;
+}
+
+main .output-side .reset-row {
+  display: -ms-grid;
+  display: grid;
+  -ms-flex-line-pack: end;
+      align-content: end;
+}
+
+main .output-side .reset-row button {
+  font-size: 100%;
+  border: 0;
+  border-radius: 5px;
+  padding: 7px;
+}
+
+main .output-side .reset-row button:disabled {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(197, 228, 231, 0.2)), to(rgba(197, 228, 231, 0.2))), -webkit-gradient(linear, left top, left bottom, from(#00494d), to(#00494d));
+  background: linear-gradient(rgba(197, 228, 231, 0.2), rgba(197, 228, 231, 0.2)), linear-gradient(#00494d, #00494d);
+  color: #00494d;
+}
+
+main .output-side .reset-row button:enabled {
+  cursor: pointer;
+  background: -webkit-gradient(linear, left top, left bottom, from(#26c0ab), to(#26c0ab));
+  background: linear-gradient(#26c0ab, #26c0ab);
+}
+
+/* Removes arrows/spinners */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/*-----------------------------------------------*/
+/* FOOTER */
+/*-----------------------------------------------*/
+footer {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  grid-area: footer;
+  font-size: 11px;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: end;
+      align-content: end;
+  padding-bottom: 10px;
+  color: #00494d;
+}
+
+a {
+  color: #26c0ab;
+}
+/*# sourceMappingURL=styles.css.map */
