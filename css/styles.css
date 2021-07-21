@@ -1,4 +1,6 @@
+/*-----------------------------------------------*/
 /* VARIABLES */
+/*-----------------------------------------------*/
 /*-----------------------------------------------*/
 /* BASIC SETUP */
 /*-----------------------------------------------*/
@@ -12,6 +14,7 @@
 html {
   font-family: "Space Mono", monospace;
   font-weight: 400;
+  font-size: 16px;
 }
 
 body {
@@ -23,6 +26,39 @@ body {
       grid-template-columns: 1fr max-content 1fr;
       grid-template-areas: ". header     ." ". calculator ." ". footer     .";
   background-color: #c5e4e7;
+}
+
+/*-----------------------------------------------*/
+/* REUSABLE / GENERAL RULES */
+/*-----------------------------------------------*/
+.larger-weight, .select-tip-headings, h3, main .input-side .bill-row input, main .input-side .select-tip-row .single-select-btn-group div .custom-input, main .input-side .number-of-people-row input, main .output-side .result-row .text p, main .output-side .result-row .result p, main .output-side .reset-row button {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+}
+
+.select-tip-headings {
+  font-size: 80%;
+  color: #5e7a7d;
+  margin-bottom: 7px;
+}
+
+.select-tip-btn-structure {
+  width: 100px;
+  height: 40px;
+  border: 0;
+  border-radius: 5px;
+}
+
+.invalid-input {
+  outline: red auto 1px;
+}
+
+/*-----------------------------------------------*/
+/* HEADINGS */
+/*-----------------------------------------------*/
+h3 {
+  color: white;
+  font-size: 100%;
 }
 
 /*-----------------------------------------------*/
@@ -40,39 +76,6 @@ header {
 
 header p {
   color: red;
-}
-
-/*-----------------------------------------------*/
-/* REUSABLE / GENERAL RULES */
-/*-----------------------------------------------*/
-.larger-weight, .select-tip-headings, h3, main .input-side .bill-row input, main .input-side .select-tip-row .single-select-btn-group div .custom-input, main .input-side .number-of-people-row input, main .output-side .result-row .text p, main .output-side .result-row .result p, main .output-side .reset-row button {
-  font-family: "Space Mono", monospace;
-  font-weight: 700;
-}
-
-.select-tip-headings {
-  font-size: 80%;
-  color: #5e7a7d;
-  margin-bottom: 7px;
-}
-
-.select-tip-btn-structure, main .input-side .select-tip-row .single-select-btn-group div .custom-input, main .input-side .select-tip-row .single-select-btn-group div label {
-  width: 100px;
-  height: 40px;
-  border: 0;
-  border-radius: 5px;
-}
-
-.invalid-input {
-  outline: red auto 1px;
-}
-
-/*-----------------------------------------------*/
-/* HEADER */
-/*-----------------------------------------------*/
-h3 {
-  color: white;
-  font-size: 100%;
 }
 
 /*-----------------------------------------------*/
@@ -146,9 +149,7 @@ main .input-side .select-tip-row .single-select-btn-group {
 
 main .input-side .select-tip-row .single-select-btn-group div {
   outline: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: inline-block;
 }
 
 main .input-side .select-tip-row .single-select-btn-group div .custom-input {
@@ -160,7 +161,7 @@ main .input-side .select-tip-row .single-select-btn-group div .custom-input {
 
 main .input-side .select-tip-row .single-select-btn-group div input.single-select-btn {
   display: none;
-  opacity: 100;
+  opacity: 0;
 }
 
 main .input-side .select-tip-row .single-select-btn-group div input.single-select-btn:checked + label {

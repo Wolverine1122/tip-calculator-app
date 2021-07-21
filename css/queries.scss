@@ -1,14 +1,51 @@
-@media screen and (max-width: 760px) {
-    header p {
-        margin-top: 30px;
-    }
-    body {
-        height: initial;
-    }
+@media only screen and (max-width: 760px) {
+  header p {
+    margin-top: 20px;
+  }
+  body {
+    height: initial;
+  }
+  main {
+    grid-template-columns: 1fr;
+    grid-column-gap: 0;
+    grid-row-gap: 30px;
+    margin: 30px 0;
+  }
+}
+
+@media only screen and (max-width: 410px) {
+  html {
+    font-size: 14px;
+  }
+  .select-tip-btn-structure {
+    width: 80px;
+    height: 35px;
+  }
+}
+
+@media only screen and (max-width: 330px){
     main {
-        grid-template-columns: 1fr;
-        grid-column-gap: 0;
-        grid-row-gap: 30px;
-        margin: 50px 0;
+        padding: 30px 20px;
+
+        .output-side {
+            padding: 30px 20px;
+        }
+    }
+    h3 {
+        font-size: 90%;
+    }
+    #tip-amount,
+    #total {
+        font-size: 130%;
+    }
+    .select-tip-btn-structure {
+        width: 70px;
+        height: 30px;
+    }
+    footer div {
+        #attribution-line-break::after{
+            content: "\a";
+            white-space: pre;
+        }
     }
 }

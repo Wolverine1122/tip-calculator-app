@@ -1,4 +1,8 @@
+/*-----------------------------------------------*/
 /* VARIABLES */
+/*-----------------------------------------------*/
+
+
 $strong-cyan: hsl(172, 67%, 45%);
 $dark-cyan: hsl(183, 100%, 15%);
 $darker-grayish-cyan: hsl(186, 14%, 43%);
@@ -7,9 +11,11 @@ $background: hsl(185, 41%, 84%);
 $button-background: hsl(189, 41%, 97%);
 $white: hsl(0, 0%, 100%);
 
+
 /*-----------------------------------------------*/
 /* BASIC SETUP */
 /*-----------------------------------------------*/
+
 
 * {
   margin: 0;
@@ -20,6 +26,7 @@ $white: hsl(0, 0%, 100%);
 html {
   font-family: "Space Mono", monospace;
   font-weight: 400;
+  font-size: 16px;
 }
 
 body {
@@ -34,23 +41,12 @@ body {
   background-color: $background;
 }
 
-/*-----------------------------------------------*/
-/* HEADER */
-/*-----------------------------------------------*/
-header {
-  grid-area: header;
-  display: grid;
-  place-items: center;
-  padding: 30px 0 0;
-
-  p {
-    color: red;
-  }
-}
 
 /*-----------------------------------------------*/
 /* REUSABLE / GENERAL RULES */
 /*-----------------------------------------------*/
+
+
 .larger-weight {
   font-family: "Space Mono", monospace;
   font-weight: 700;
@@ -107,8 +103,10 @@ header {
 .invalid-input {
   outline: red auto 1px;
 }
+
+
 /*-----------------------------------------------*/
-/* HEADER */
+/* HEADINGS */
 /*-----------------------------------------------*/
 
 h3 {
@@ -116,6 +114,22 @@ h3 {
   color: $white;
   font-size: 100%;
 }
+
+
+/*-----------------------------------------------*/
+/* HEADER */
+/*-----------------------------------------------*/
+header {
+  grid-area: header;
+  display: grid;
+  place-items: center;
+  padding: 30px 0 0;
+
+  p {
+    color: red;
+  }
+}
+
 
 /*-----------------------------------------------*/
 /* MAIN */
@@ -155,11 +169,10 @@ main {
 
         div {
           outline: none;
-          display: flex;
+          display: inline-block;
 
           .custom-input {
             @extend .larger-weight;
-            @extend .select-tip-btn-structure;
             font-size: 100%;
             background-color: $button-background;
             color: $dark-cyan;
@@ -168,7 +181,7 @@ main {
 
           input.single-select-btn {
             display: none;
-            opacity: 100;
+            opacity: 0;
 
             &:checked + label {
               background-color: $strong-cyan;
@@ -180,7 +193,6 @@ main {
             display: grid;
             place-content: center;
             background-color: $dark-cyan;
-            @extend .select-tip-btn-structure;
 
             /* Shows colors when you click before you actually select */
             &:active,
